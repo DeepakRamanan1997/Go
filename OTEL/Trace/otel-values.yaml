@@ -95,7 +95,7 @@ config:
   exporters:
     debug: {}
     otlp:
-      endpoint: jaeger-collector.observability.svc.cluster.local:4317
+      endpoint: jaeger-collector.observability.svc.cluster.local:4317  # otlp-grpc port, its should be used while using otlp receiver and exporter
       tls:
         insecure: true
     awsxray:
