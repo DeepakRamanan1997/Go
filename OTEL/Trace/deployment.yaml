@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trace-generator
+  labels:
+    app: trace-generator
+  namespace: sample
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: trace-generator
+  template:
+    metadata:
+      labels:
+        app: trace-generator
+    spec:
+      containers:
+      - name: trace-generator
+        image: deepakramanan/goapp:latest
+        imagePullPolicy: Always
+        env:
+        - name: JAEGER_ENDPOINT
+          value: "my-opentelemetry-collector.otel.svc.cluster.local:4317"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trace-generator
+  namespace: sample
+spec:
+  selector:
+    app: trace-generator
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
