@@ -7,7 +7,7 @@ a) build the docker image using dockerfile for that main.go file and push it to 
    
    iii) docker buildx build --platform linux/amd64,linux/arm64 -t dockerusername/reponame:tag --push .
 
-The last command builds the dockerimage which supports both amd and arm architectures and pushes to the repo.
+The last command builds the dockerimage which supports both amd and arm architectures and pushes to the repo. Building the image takes more than 10 Minutes.
 
    To run docker buildx command install docker buildx following the steps given in this link https://github.com/docker/buildx/blob/master/README.md
    
